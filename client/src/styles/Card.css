@@ -1,0 +1,45 @@
+
+.sh .card {
+  /* background-color: rgba(128, 128, 128, 0.097); */
+  width: 18rem;
+  min-width: 18rem;
+}
+.sh .card-name-price {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sh .card-price {
+  color: green;
+  font-weight: bold;
+}
+.sh .card-title {
+  color: rgb(0, 0, 0);
+}
+.sh .bt{
+  border-radius: 0;
+  width: 45%;
+  min-width: 120px;
+  border-top-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  font-size: 14px;
+  font-weight: bold;
+  margin-right: 3px;
+}
+
+.sh .card-text {
+  color: rgb(90, 89, 89);
+}
+
+.sh .card img{
+  transition: .5s;
+}
+
+.sh .card img:hover {
+  transform: scale(0.95);
+}
+
+.sh .card-img-top {
+  height: 300px !important;
+}

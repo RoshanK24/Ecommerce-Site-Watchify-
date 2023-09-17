@@ -1,0 +1,79 @@
+/* ===================================
+========= register page  */
+.form-container {
+    margin-top: 0px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 80vh;
+    flex-direction: column;
+    background-image: url("./login_bg1.jpg");
+    background-repeat: no-repeat;
+    background-position: fixed;
+    background-size: cover ;
+  }
+  
+  .form-container form {
+    box-shadow: rgba(255, 255, 255, 0.75) 0px 5px 20px;
+    padding: 30px;
+    background-color: rgb(255, 255, 255);
+    width: 45vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    min-height: 43vh;
+    border-radius: 15px;
+  }
+  
+  .form-container form .title {
+    text-align: center;
+    margin-bottom: 15px;
+    font-weight: bold;
+    font-family: "Playfair Display", serif;
+    color: rgb(46, 16, 86);
+  }
+  
+  .form-container form input {
+    border: none;
+    border-bottom: 1px solid #000;
+    border-radius: 0;
+    width: 35vh;
+    /* text-align: center; */
+  }
+  
+  .form-container form button {
+    border: 1px solid black;
+    border-radius: 0;
+    background-color: #000;
+    color: white;
+    width: 100%;
+  }
+  
+  .form-container form button:hover {
+    border: 1px solid black;
+    background: #000000; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #5f3079,
+      #1e1e1e
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #5f3079,
+      #1e1e1e
+    ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+  }
+  
+  .forgot-btn {
+    background-color: #434343a4 !important;
+    border: 0 !important;
+  }
+  
+  .forgot-btn:hover {
+    color: white !important;
+  }
+
+
+
+  

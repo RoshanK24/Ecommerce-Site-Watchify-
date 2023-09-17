@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Poppins:wght@300;400&display=swap');
+/* font-family: 'Playfair Display', serif;
+font-family: 'Poppins', sans-serif; */
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  color:white ;
+}
+body{
+  background-color: #1a1c1f;
+}
+
+
+/*================NavBar=====================*/
+.navbar{
+  font-family: 'poppins';
+  font-size: 17px; 
+  line-height: 26px;
+  text-transform: uppercase;
+  background: linear-gradient(to right, #000000, #2a2a2a);
+  box-shadow: 0px 2px 10px 1px rgba(129, 129, 129, 0.162) !important;
+}
+.nav-link{
+  font-weight: 300 !important;
+}
+.active{
+  border-bottom: 2px solid rgb(134, 13, 255);
+  color: rgb(8, 153, 210) !important;
+}
+.nav-link:hover{
+  color: #775588;
+}
+
+.navbar-toggler{
+  color:rgb(0, 0, 0) !important;
+}
+.navbar-brand{
+  font-weight: 700;
+  font-family: 'roboto', 'sans-serif';
+  letter-spacing: 3px;
+}
+.box{
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+
+/*=====================Footer====================*/
+
+.footer{
+  color: white;
+  padding: 5px 5px 2px 5px;
+  background: #181818;
+  background: -webkit-linear-gradient(to right, #000000, #2a2a2a);
+  background: linear-gradient(to right, #000000, #22152e);
+  box-shadow: 6px 0px 15px 1px rgba(129, 129, 129, 0.162) !important;
+
+}
+
+.footer a{
+  text-decoration: none;
+  color: white;
+  padding: 10px;
+}
+.footer a:hover{
+  color: #775496;
+}
+
+
+/*================page not found================*/
+.pnf{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  flex-direction: column;
+  height: 80vh;
+  background-image: url('./styles/login_bg1.jpg');
+  background-repeat: no-repeat;
+  background-position: fixed;
+  background-size: cover ;
+}
+
+.pnf .num {
+  font-size: 8rem;
+}
+.pnf .text {
+  font-size: 3.5rem;
+}
+
+.pnf .button{
+    /* border: 1px solid rgb(104, 100, 100); */
+    border-radius: 5px;
+    background-color: #360953;
+    color: white;
+    height: 32px;
+    width: 100px;
+    margin-inline: 47%;
+    
+}
+.pnf .button:hover{
+   border: 1px solid black;
+    background: #000000; /* fallback for old browsers */
+    background: -webkit-linear-gradient(
+      to right,
+      #5f3079,
+      #1e1e1e
+    ); /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(
+      to right,
+      #5f3079,
+      #1e1e1e
+    );
+}
+
+
+/* product link */
+.product-link{
+  text-decoration: none !important;
+  color: black;
+}
+
+.product-link .card{
+  color: black !important;
+}
+
+.doBlack{
+  color: black !important;
+}
