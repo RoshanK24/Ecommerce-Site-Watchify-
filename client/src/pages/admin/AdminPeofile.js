@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from 'react';
-import UserMenu from '../../components/Layout/UserMenu'
 import Layout from '../../components/Layout/Layout'
 import axios from 'axios';
 import { useAuth } from '../../context/auth';
 import { toast } from 'react-hot-toast';
 import "../../styles/Profile.css";
+import AdminMenu from '../../components/Layout/AdminMenu';
 
-const Profile = () => {
+const AdminProfile = () => {
     //context 
     const [auth, setAuth] = useAuth();
 
@@ -53,7 +53,7 @@ const Profile = () => {
             <div className='container-fluid m-3 p-3 prof'>
                 <dic className="row">
                     <div className='col-md-3'>
-                        <UserMenu />
+                        <AdminMenu />
                     </div>
                     <div className='col-md-8 mt-4'>
                         <div className='register'>
@@ -118,4 +118,4 @@ const Profile = () => {
     )
 }
 
-export default Profile
+export default AdminProfile;

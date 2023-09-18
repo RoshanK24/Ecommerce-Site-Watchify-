@@ -80,17 +80,7 @@ const CategoryProduct = () => {
               ))}
             </div>
             <div className="m-2 p-3">
-            {/* {products && products.length < total && (
-              <button
-                className="btn btn-warning"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setPage(page + 1);
-                }}
-              >
-                {loading ? "Loading ..." : "Loadmore"}
-              </button>
-            )} */}
+            
           </div>
           </div>
         </div>

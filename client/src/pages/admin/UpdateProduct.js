@@ -157,10 +157,10 @@ const UpdateProduct = () => {
 
                         <div className='d-flex'>
                             <div className='mb-3 me-3'>
-                                <button className='btn btn-primary' onClick={handleUpdate}>UPDATE PRODUCT</button>
+                                <button className='btn btn-primary mx-1' onClick={handleUpdate}>UPDATE PRODUCT</button>
                             </div>
                             <div className='mb-3'>
-                                <button className='btn btn-danger' onClick={handleDelete}>DELETE PRODUCT</button>
+                                <button className='btn btn-danger mx-1' onClick={handleDelete}>DELETE PRODUCT</button>
                             </div>
                         </div>
 

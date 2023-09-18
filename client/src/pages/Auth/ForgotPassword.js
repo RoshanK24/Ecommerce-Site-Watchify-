@@ -12,11 +12,11 @@ const ForgotPassword = () => {
     const navigate = useNavigate();
 
     const handleSubmit = async (e) => {
-        e.preventDefault();
+        e.preventDefault();  
         try {
             const res = await axios.post('/api/v1/auth/forgot', { email, NewPassword, question });
             console.log(res);
-            if (res && res?.data?.success) {
+            if (res && res.data.success) {
                 toast.success(res.data.message);
                 navigate('/login');
             }

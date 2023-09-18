@@ -12,7 +12,7 @@ const AdminOrders = () => {
         "Processing",
         "Shipped",
         "Deliverd",
-        "cancel",
+        "Cancel",
     ]);
     const [orders, setOrders] = useState([]);
     const [auth] = useAuth();
@@ -50,7 +50,7 @@ const AdminOrders = () => {
                     <div className="col-md-3">
                         <AdminMenu />
                     </div>
-                    <div className="col-md-9">
+                    <div className="col-md-9 me-4">
                         <h1 className="text-center">All Orders</h1>
                         {orders?.map((o, i) => {
                             return (
@@ -70,18 +70,6 @@ const AdminOrders = () => {
                                             <tr>
                                                 <td>{i + 1}</td>
                                                 <td>
-                                                {/* <Select
-                                                        bordered={false}
-                                                        onChange={(value) => handleChange(o._id, value)}
-                                                        defaultValue={o?.status}
-                                                        className="text-dark"
-                                                    >
-                                                        {status.map((s, i) => (
-                                                            <Option key={i} value={s} className="text-dark">
-                                                                {s}
-                                                            </Option>
-                                                        ))}
-                                                    </Select> */}
 
                                                     <div className="nav-item dropdown">
                                                         <div className="nav-link dropdown-toggle text-light p-0 " data-bs-toggle="dropdown" aria-expanded="false">
@@ -115,7 +103,7 @@ const AdminOrders = () => {
                                                 <div className="col-md-7 text-dark">
                                                     <h5>{p.name}</h5>
                                                     <p className="text-dark">{p.description.substring(0, 50)}....</p>
-                                                    <h6>Price : {p.price}</h6>
+                                                    <h6>Price : ${p.price} </h6>
                                                 </div>
                                             </div>
                                         ))}

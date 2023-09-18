@@ -33,14 +33,14 @@ const Product = () => {
           </div>
           <div className='col-md-9'>
             <h1 className='ps-3 pt-3'>All Product List</h1>
-            <div className='d-flex flex-wrap'>
-              {products?.map(p => (
+            <div className='d-flex flex-wrap sh'>
+              {products?.toReversed().map(p => (
                 <Link key={p._id} to={`/dashboard/admin/product/${p.slug}`} className='product-link'>
                   <div className="card m-2" style={{ width: '18rem' }}>
                     <img className="card-img-top text-dark" src={`/api/v1/product/product-photo/${p._id}`} alt={p.name} />
                     <div className="card-body">
                       <h5 className="card-title text-dark">{p.name}</h5>
-                      <p className="card-text text-dark">{p.description}</p>
+                      <p className="card-text text-dark">{p.description.substring(0, 80)}...</p>
                     </div>
                   </div>
                 </Link>

@@ -3,11 +3,12 @@ import Header from './Header'
 import Footer from './Footer'
 import { Toaster } from 'react-hot-toast';
 /*===========SEO===========*/
-import { Helmet } from "react-helmet";
+import { Helmet } from "react-helmet"; 
+
 
 const Layout = ({ children, title, description, keywords, author }) => {
     return (
-        <div>
+        <div style={{maxWidth: "100vw"}}>
             <Helmet>
                 <meta charSet='utf-8' />
                 <meta name="description" content={description} />

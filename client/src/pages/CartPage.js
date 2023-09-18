@@ -60,22 +60,24 @@ const CartPage = () => {
 
   //handle payments
   const handlePayment = async () => {
-    try {
-      setLoading(true);
-      const { nonce } = await instance.requestPaymentMethod();
-      await axios.post("/api/v1/product/braintree/payment", {
-        nonce,
-        cart,
-      });
-      setLoading(false);
-      localStorage.removeItem("cart");
-      setCart([]);
-      navigate("/dashboard/user/orders");
-      toast.success("Payment Completed Successfully ");
-    } catch (error) {
-      console.log(error);
-      setLoading(false);
-    }
+      try {
+        setLoading(true);
+        const { nonce } = await instance.requestPaymentMethod();
+        console.log(nonce);
+        const { data } = await axios.post("/api/v1/product/braintree/payment", {
+          nonce,
+          cart,
+        });
+        console.log(data);
+        setLoading(false);
+        localStorage.removeItem("cart");
+        setCart([]);
+        navigate("/dashboard/user/orders");
+        toast.success("Payment Completed Successfully ");
+      } catch (error) {
+        console.log(error);
+        setLoading(false);
+      }
   };
   return (
     <Layout>
@@ -90,13 +92,13 @@ const CartPage = () => {
                 {cart?.length
                   ? `You Have ${cart.length} items in your cart ${auth?.token ? "" : "please login to checkout !"
                   }`
-                  : " Your Cart Is Empty"}
+                  : " Your Cart is Empty"}
               </p>
             </h1>
           </div>
         </div>
         <div className="row justify-content-center">
-          <div className="col-md-6">
+          <div className="col-lg-6">
             {
               cart?.map(p => (
                 <div className="row card flex-row mb-3 bg-light">
@@ -120,7 +122,7 @@ const CartPage = () => {
               ))
             }
           </div>
-          <div className="col-md-5 justify-content-center">
+          <div className="col-lg-5 justify-content-center">
             <h2>Cart Summary</h2>
             <p>Total | Checkout | Payment</p>
             <hr />

@@ -88,7 +88,7 @@ const CreateCategory = () => {
 
     return (
         <Layout title={"dashboard - Create category"}>
-            <div className='container-fluid m-3'>
+            <div className='container-fluid m-3 p-3'>
                 <div className='row'>
                     <div className='col-md-3'>
                         <AdminMenu />
@@ -97,7 +97,7 @@ const CreateCategory = () => {
                         <h1 className='ps-3 pt-3'>
                             Manage Category
                         </h1>
-                        <div className='p-3 w-50'>
+                        <div className='p-3 w-75'>
                             <CategoryForm handleSubmit={handleSubmit} value={name} setValue={setName} />
                         </div>
                         <div className='w-75'>

@@ -3,6 +3,7 @@ import Layout from '../../components/Layout/Layout';
 import axios from 'axios';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useAuth } from '../../context/auth.js';
+import toast from 'react-hot-toast';
 
 
 const Login = () => {
@@ -28,11 +29,11 @@ const Login = () => {
                 navigate(location.state || '/');
             }
             else {
-                // toast.error(res.data.message);
+                toast.error(res.data.message);
             }
         } catch (error) {
             console.log(error);
-            // toast.error('Something went wrong');
+            toast.error('Something went wrong');
         }
     }
 

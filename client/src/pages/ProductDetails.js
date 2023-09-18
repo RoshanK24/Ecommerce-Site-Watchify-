@@ -5,12 +5,13 @@ import { useParams } from 'react-router-dom'
 import { useNavigate } from 'react-router-dom'
 import { toast } from 'react-hot-toast'
 import { useCart } from '../context/cart.js';
+import "../styles/Card.css";
 
 const ProductDetails = () => {
   const params = useParams();
   const [cart, setCart] = useCart();
   const [product, setProduct] = useState({});
-  const [relatedProduct, setRelatedProduct] = useState([]);
+  const [relatedProducts, setRelatedProduct] = useState([]);
   const navigate = useNavigate();
 
   //inirial product details
@@ -42,11 +43,11 @@ const ProductDetails = () => {
 
   return (
     <Layout title={"Product-Details"}>
-      <div className='row container mt-3 ms-2 mb-5'>
-        <div className='col-md-3 ms-3'>
-          <img className="text-dark" src={`/api/v1/product/product-photo/${product._id}`} alt={product.name} height={"300px"} width={"300px"} />
+      <div className='row container-fluid mt-3 ms-2 mb-5'>
+        <div className='col-lg-4 ms-3 d-flex justify-content-center'>
+          <img className="text-dark img-responsive" src={`/api/v1/product/product-photo/${product._id}`} alt={product.name} style={{ width: '300px' }} />
         </div>
-        <div className='col-md-6'>
+        <div className='col-lg-7'>
           <h1 className='text-center'>Product Details</h1>
           <h6>Name: {product.name}</h6>
           <h6>Description: {product.description}</h6>
@@ -61,25 +62,28 @@ const ProductDetails = () => {
           >ADD TO CART</button>
         </div>
       </div>
-      <div className='row container ms-2'>
-        <h1>Similar Products</h1>
-        {relatedProduct.length < 1 && <p className='text-center'>No Similar Product Found</p>}
-        <div className='d-flex flex-wrap mb-3'>
-          {relatedProduct?.map(p => (
+
+      <h1 className='mx-3'>Similar Products➡️ </h1>
+      <div className='container'>
+        {relatedProducts.length < 1 && <p className='text-center'>No Similar Product Found</p>}
+        <div className='d-flex flex-wrap mb-3 sh'>
+          {relatedProducts?.map(p => (
             <div className="card m-2" style={{ width: '18rem' }}>
               <img className="card-img-top text-dark" src={`/api/v1/product/product-photo/${p._id}`} alt={p.name} />
               <div className="card-body">
                 <h5 className="card-title">{p.name}</h5>
                 <p className="card-text text-dark">{p.description.substring(0, 30)}...</p>
                 <p className="card-text text-dark">${p.price}</p>
-                <button className="btn btn-primary m1-1" onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
-                <button className="btn btn-secondary ms-1"
-                  onClick={() => {
-                    setCart([...cart, p]);
-                    localStorage.setItem("cart", JSON.stringify([...cart, p]));
-                    toast.success("Item Added to Cart")
-                  }}
-                >ADD TO CART</button>
+                <div className='allbt'>
+                  <button className="btn btn-primary bt" onClick={() => navigate(`/product/${p.slug}`)}>More Details</button>
+                  <button className="btn btn-secondary bt"
+                    onClick={() => {
+                      setCart([...cart, p]);
+                      localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                      toast.success("Item Added to Cart")
+                    }}
+                  >ADD TO CART</button>
+                </div>
               </div>
             </div>
           ))}

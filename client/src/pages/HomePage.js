@@ -122,7 +122,7 @@ const HomePage = () => {
         width={"100%"}
       />
       <div className='container-fluid row mt-3 home-page'>
-        <div className='col-md-3 filters'>
+        <div className='col-lg-2 filters cat'>
           <h4 className='text-center mt-4'>Filter By Category </h4>
           <div className='d-flex flex-column mb-3'>
             {categories?.map((c) => (
@@ -146,7 +146,7 @@ const HomePage = () => {
             <button className='btn btn-danger' onClick={() => window.location.reload()}>RESET FILTERS</button>
           </div>
         </div>
-        <div className='col-md-9 home'>
+        <div className='col-lg-10 home'>
           <h1 className='text-center'>All Product</h1>
           <div className='d-flex flex-wrap mb-3 justify-content-center'>
             {products?.map(p => (
@@ -167,16 +167,16 @@ const HomePage = () => {
                       </h5>
                     </div>
                     <p className="card-text ">
-                      {p.description.substring(0, 60)}...
+                      {p.description.substring(0, 50)}...
                     </p>
                     <div className="card-name-price">
                       <button
-                        className="btn btn-info ms-1 bt"
+                        className="btn btn-info bt"
                         onClick={() => navigate(`/product/${p.slug}`)}
                       >
                         More Details
                       </button>
-                      <button className="btn btn-secondary ms-1 bt"
+                      <button className="btn btn-secondary bt"
                         onClick={() => {
                           setCart([...cart, p]);
                           localStorage.setItem("cart", JSON.stringify([...cart, p]));

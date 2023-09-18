@@ -3,7 +3,8 @@
   }
   .home .card {
     /* background-color: rgba(128, 128, 128, 0.097); */
-    width: 18rem;
+    width: 16rem;
+    height: auto;
   }
   .home .card-name-price {
     display: flex;
@@ -20,12 +21,12 @@
   }
   .home .bt{
     border-radius: 0;
-    width: 100%;
+    width: 50% !important;
     border-top-left-radius: 5px;
     border-bottom-right-radius: 5px;
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
-    margin-right: 3px;
+    margin-right: 4px;
   }
   
   .home .card-text {
@@ -34,6 +35,7 @@
 
   .home .card img{
     transition: .5s;
+    height: 16rem !important;
   }
   
   .home .card img:hover {

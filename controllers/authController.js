@@ -105,42 +105,39 @@ export const loginController = async (req, res) => {
 
 
 //Forgot password Controller
-export const forgotController = async (req, res) => {
+export const forgotPasswordController = async (req, res) => {
     try {
-        const { email, newPassword, question } = req.body;
+        const { email, question, NewPassword } = req.body;
         if (!email) {
-            return res.status(400).send({ success: false, message: "Email is required" });
-        }
-        if (!newPassword) {
-            return res.status(400).send({ success: false, message: "New Password is required" });
+            res.status(400).send({ message: "Emai is required" });
         }
         if (!question) {
-            return res.status(400).send({ success: false, message: "favorite sports is required" });
+            res.status(400).send({ message: "Answer is required" });
         }
-        //CHECK 
+        if (!NewPassword) {
+            res.status(400).send({ message: "New Password is required" });
+        }
+        //check
         const user = await userModel.findOne({ email, question });
-
         //validation
         if (!user) {
             return res.status(404).send({
                 success: false,
-                message: "Wrong Email or Question"
+                message: "Wrong Email Or Answer",
             });
         }
-
-        const hashed = await hashPassword(newPassword);
+        const hashed = await hashPassword(NewPassword);
         await userModel.findByIdAndUpdate(user._id, { password: hashed });
         res.status(200).send({
             success: true,
-            message: "Password reset Successfully",
-        })
-
+            message: "Password Reset Successfully",
+        });
     } catch (error) {
         console.log(error);
         res.status(500).send({
             success: false,
             message: "Something went wrong",
-            error
+            error,
         });
     }
 };
@@ -222,30 +219,30 @@ export const getAllOrdersController = async (req, res) => {
 //order status
 export const orderStatusController = async (req, res) => {
     try {
-      const { orderId } = req.params;
-      const { st } = req.body;
-      console.log(st, orderId)
-  
-      const orders = await orderModel.findByIdAndUpdate(
-        orderId,
-        { status: st },
-        { new: true }
-      );
-  
-      if (!orders) {
-        res.status(404).send({
-          success: false,
-          message: "Order not found",
-        });
-      } else {
-        res.status(200).json(orders);
-      }
+        const { orderId } = req.params;
+        const { st } = req.body;
+        console.log(st, orderId)
+
+        const orders = await orderModel.findByIdAndUpdate(
+            orderId,
+            { status: st },
+            { new: true }
+        );
+
+        if (!orders) {
+            res.status(404).send({
+                success: false,
+                message: "Order not found",
+            });
+        } else {
+            res.status(200).json(orders);
+        }
     } catch (error) {
-      console.error("Error updating order:", error);
-      res.status(500).send({
-        success: false,
-        message: "Error while updating order status",
-      });
+        console.error("Error updating order:", error);
+        res.status(500).send({
+            success: false,
+            message: "Error while updating order status",
+        });
     }
-  };
-  
+};
+
