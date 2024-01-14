@@ -1,4 +1,3 @@
-
 import express from "express";
 import colors from "colors";
 import dotenv from "dotenv";
@@ -11,7 +10,7 @@ import cors from 'cors';
 import bodyParser from 'body-parser';
 import path from "path";
 import { fileURLToPath } from "url";
-console.log("ppppsssssssssss",process.env.B_PRIVET_KEY)
+
 
 //configure env
 dotenv.config();
