@@ -1,17 +1,19 @@
 import productModal from "../models/productModal.js";
 import categoryModel from "../models/categoryModel.js";
 import fs from 'fs';
+import dotenv from "dotenv";
 import slugify from "slugify";
 import braintree from "braintree";
 import orderModel from "../models/orderModel.js";
+dotenv.config();
 
 //payment gateway
 var gateway = new braintree.BraintreeGateway({
     environment: braintree.Environment.Sandbox,
-    merchantId: "qvn7bz869kgk4k77",
-    publicKey: "rx8hr5qm5xxhtqxf",
-    privateKey: "5f3532d7867245a0e79fa36f57c45e04",
-  });
+    merchantId: process.env.B_MERCHANT_ID,
+    publicKey: process.env.B_PUBLIC_KEY,
+    privateKey: process.env.B_PRIVET_KEY,
+});
 
 export const createProductController = async (req, res) => {
     try {
@@ -337,19 +339,19 @@ export const braintreePaymentController = async (req, res) => {
                 submitForSettlement: true
             }
         },
-        function(error, result) {
-            if(result){
-                const order = new orderModel({
-                    products:cart,
-                    payment: result,
-                    buyer: req.user._id
-                }).save()
-                res.json({ok:true})
+            function (error, result) {
+                if (result) {
+                    const order = new orderModel({
+                        products: cart,
+                        payment: result,
+                        buyer: req.user._id
+                    }).save()
+                    res.json({ ok: true })
+                }
+                else {
+                    res.status(500).send(error);
+                }
             }
-            else{
-                res.status(500).send(error);
-            }
-        }
         )
     } catch (error) {
         console.log(error);

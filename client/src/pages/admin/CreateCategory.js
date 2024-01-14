@@ -4,7 +4,7 @@ import AdminMenu from '../../components/Layout/AdminMenu';
 import axios from 'axios';
 import CategoryForm from '../../components/Form/CategoryForm';
 import { toast } from 'react-hot-toast';
-import { Modal } from "antd";
+import { Modal } from "antd"; 
 
 const CreateCategory = () => {
     const [categories, setCategories] = useState([]);
@@ -113,9 +113,9 @@ const CreateCategory = () => {
                                         return <>
                                             <tr>
                                                 <td key={c._id}>{c.name}</td>
-                                                <td>
-                                                    <button className='btn btn-primary'  onClick={() => { setVisible(true); setUpdatedName(c.name); setSelected(c); }}>Edit</button>
-                                                    <button className='btn btn-danger mx-2' onClick={() => { handleDelete(c._id, c.name) }}>Delete</button>
+                                                <td className='d-flex funlogodiv'>
+                                                    <div><img className='funlogo' src='/images/edit.png' onClick={() => { setVisible(true); setUpdatedName(c.name); setSelected(c); }}></img></div>
+                                                    <div><img className='funlogo' src='/images/delete.png' onClick={() => { handleDelete(c._id, c.name) }}></img></div> 
                                                 </td>
                                             </tr>
                                         </>

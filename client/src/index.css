@@ -129,3 +129,15 @@ body{
 .doBlack{
   color: black !important;
 }
+
+
+
+/* ---------------------------------------- */
+.funlogo{
+  width: 28px;
+  margin-right: 8px;
+}
+.funlogodiv{
+  padding-bottom: 0 !important;
+  padding-top: 7px !important; 
+}

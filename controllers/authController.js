@@ -17,6 +17,7 @@ export const registerController = async (req, res) => {
         if (!question) { return res.send({ message: "Sports name is Required" }) };
 
         //check user 
+        console.log(name,phone)
         const exisitingUser = await userModel.findOne({ email });
         //check for exisisting user
         if (exisitingUser) {
