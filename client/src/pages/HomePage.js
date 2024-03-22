@@ -82,7 +82,7 @@ const HomePage = () => {
 
   //lifecycle method
   useEffect(() => {
-    if (!checked.length || !radio.length) getAllProduct();
+    if (!checked.length && !radio.length) getAllProduct();
   }, [checked.length, radio.length])
 
   useEffect(() => {
@@ -113,8 +113,6 @@ const HomePage = () => {
 
   return (
     <Layout title={"All Product - Best offers"}>
-      {/* <pre>{JSON.stringify(auth, null, 4)}</pre>
-      <pre>{localStorage.getItem('auth').user}</pre> */}
       <img
         src="/images/banner.png"
         className="banner-img"
@@ -151,41 +149,41 @@ const HomePage = () => {
           <div className='d-flex flex-wrap mb-3 justify-content-center'>
             {products?.map(p => (
               <div className="card m-2" key={p._id}>
-                  <img
-                    src={`/api/v1/product/product-photo/${p._id}`}
-                    className="card-img-top"
-                    alt={p.name}
-                  />
-                  <div className="card-body">
-                    <div className="card-name-price">
-                      <h5 className="card-title">{p.name}</h5>
-                      <h5 className="card-price">
-                        {p.price.toLocaleString("en-US", {
-                          style: "currency",
-                          currency: "USD",
-                        })}
-                      </h5>
-                    </div>
-                    <p className="card-text ">
-                      {p.description.substring(0, 50)}...
-                    </p>
-                    <div className="card-name-price">
-                      <button
-                        className="btn btn-info bt"
-                        onClick={() => navigate(`/product/${p.slug}`)}
-                      >
-                        More Details
-                      </button>
-                      <button className="btn btn-secondary bt"
-                        onClick={() => {
-                          setCart([...cart, p]);
-                          localStorage.setItem("cart", JSON.stringify([...cart, p]));
-                          toast.success("Item Added to Cart")
-                        }}
-                      >ADD TO CART</button>
-                    </div>
+                <img
+                  src={`/api/v1/product/product-photo/${p._id}`}
+                  className="card-img-top"
+                  alt={p.name}
+                />
+                <div className="card-body">
+                  <div className="card-name-price">
+                    <h5 className="card-title">{p.name}</h5>
+                    <h5 className="card-price">
+                      {p.price.toLocaleString("en-US", {
+                        style: "currency",
+                        currency: "USD",
+                      })}
+                    </h5>
+                  </div>
+                  <p className="card-text ">
+                    {p.description.substring(0, 50)}...
+                  </p>
+                  <div className="card-name-price">
+                    <button
+                      className="btn btn-info bt"
+                      onClick={() => navigate(`/product/${p.slug}`)}
+                    >
+                      More Details
+                    </button>
+                    <button className="btn btn-secondary bt"
+                      onClick={() => {
+                        setCart([...cart, p]);
+                        localStorage.setItem("cart", JSON.stringify([...cart, p]));
+                        toast.success("Item Added to Cart")
+                      }}
+                    >ADD TO CART</button>
                   </div>
                 </div>
+              </div>
             ))}
           </div>
           <div className='m-2 p-3'>

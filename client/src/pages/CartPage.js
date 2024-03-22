@@ -60,25 +60,26 @@ const CartPage = () => {
 
   //handle payments
   const handlePayment = async () => {
-      try {
-        setLoading(true);
-        const { nonce } = await instance.requestPaymentMethod();
-        console.log(nonce);
-        const { data } = await axios.post("/api/v1/product/braintree/payment", {
-          nonce,
-          cart,
-        });
-        console.log(data);
-        setLoading(false);
-        localStorage.removeItem("cart");
-        setCart([]);
-        navigate("/dashboard/user/orders");
-        toast.success("Payment Completed Successfully ");
-      } catch (error) {
-        console.log(error);
-        setLoading(false);
-      }
+    try {
+      setLoading(true);
+      const { nonce } = await instance.requestPaymentMethod();
+      console.log(nonce);
+      const { data } = await axios.post("/api/v1/product/braintree/payment", {
+        nonce,
+        cart,
+      });
+      console.log(data);
+      setLoading(false);
+      localStorage.removeItem("cart");
+      setCart([]);
+      navigate("/dashboard/user/orders");
+      toast.success("Payment Completed Successfully ");
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
+    }
   };
+
   return (
     <Layout>
       <div className="container">
@@ -101,14 +102,14 @@ const CartPage = () => {
           <div className="col-lg-6">
             {
               cart?.map(p => (
-                <div className="row card flex-row mb-3 bg-light">
+                <div key={p.name+p.price} className="row card flex-row mb-3 bg-light">
                   <div className="col-md-3 m-1">
                     <img className="card-img-top text-dark" src={`/api/v1/product/product-photo/${p._id}`} alt={p.name} />
                   </div>
                   <div className="col-md-6 text-dark mt-2">
-                    <h5 className="card-title">{p.name}</h5>
-                    <p className="card-text text-dark mb-2">{p.description.substring(0, 40)}...</p>
-                    <h5 className="card-text">${p.price}</h5>
+                    <h5 className="card-title mb-1">{p.name}</h5>
+                    <p className="card-text text-dark mb-1">{p.description.substring(0, 40)}...</p>
+                    <h5 className="card-text mb-1">${p.price}</h5>
                   </div>
                   <div className="col-md-2 cart-remove-btn mt-4 mb-2 me-1">
                     <button
@@ -173,11 +174,16 @@ const CartPage = () => {
                       authorization: clientToken,
                       paypal: {
                         flow: "vault",
-                      },
+                      }
+                    }
+
+                    }
+
+                    onError={() => {
+                      alert("payment failed")
                     }}
                     onInstance={(instance) => setInstance(instance)}
                   />
-
                   <button
                     className="btn btn-primary"
                     onClick={handlePayment}

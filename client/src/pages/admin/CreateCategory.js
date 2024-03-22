@@ -111,8 +111,8 @@ const CreateCategory = () => {
                                 <tbody>
                                     {categories.map((c) => {
                                         return <>
-                                            <tr>
-                                                <td key={c._id}>{c.name}</td>
+                                            <tr key={c._id}>
+                                                <td >{c.name}</td>
                                                 <td className='d-flex funlogodiv'>
                                                     <div><img className='funlogo' src='/images/edit.png' onClick={() => { setVisible(true); setUpdatedName(c.name); setSelected(c); }}></img></div>
                                                     <div><img className='funlogo' src='/images/delete.png' onClick={() => { handleDelete(c._id, c.name) }}></img></div> 

@@ -23,7 +23,7 @@ const Header = () => {
     return (
         <><nav className="navbar navbar-expand-lg navbar-dark bg-dark">
             <Link to="/" className="navbar-brand text-light">
-                ⌚Watchify 
+                ⌚Watchify
             </Link>
             <button className="navbar-toggler " type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span className="navbar-toggler-icon" />
@@ -39,9 +39,13 @@ const Header = () => {
                             Categories
                         </NavLink>
                         <ul className="dropdown-menu">
-                            {categories?.map(c => (
-                                <li><Link className="dropdown-item" to={`/category/${c.slug}`} >{c.name}</Link></li>
-                            ))}
+                            {
+                                categories?.map(c => (
+                                    <div kay={c.name + c.slug}>
+                                        <li><Link className="dropdown-item" to={`/category/${c.slug}`} >{c.name}</Link></li>
+                                    </div>
+                                ))
+                            }
                         </ul>
                     </li>
                     {
