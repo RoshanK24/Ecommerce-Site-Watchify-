@@ -15,8 +15,7 @@ import { fileURLToPath } from "url";
 //configure env
 dotenv.config();
 
-// database config
-connectDB();
+
 
 //esmodule6
 const __filename = fileURLToPath(import.meta.url);
@@ -48,6 +47,8 @@ app.use("*", function(req,res){
 const PORT = process.env.PORT || 8070;
 
 //run listen
-app.listen(PORT, () => {
-    console.log(`Server runing on ${PORT}`.bgCyan.white);
-});
+connectDB().then(() => {
+    app.listen(PORT, () => {
+        console.log(`Server runing on ${PORT}`.bgCyan.white);
+    });
+})
