@@ -62,13 +62,11 @@ const CartPage = () => {
   const handlePayment = async () => {
     try {
       setLoading(true);
-      const { nonce } = await instance.requestPaymentMethod();
-      console.log(nonce);
+      const { nonce } = await instance.requestPaymentMethod(); 
       const { data } = await axios.post("/api/v1/product/braintree/payment", {
         nonce,
         cart,
-      });
-      console.log(data);
+      }); 
       setLoading(false);
       localStorage.removeItem("cart");
       setCart([]);
