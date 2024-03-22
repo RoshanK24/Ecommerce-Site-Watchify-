@@ -2,7 +2,8 @@ import { comparePassword, hashPassword } from "../helpers/authHelper.js";
 import userModel from "../models/userModel.js";
 import JWT from "jsonwebtoken";
 import orderModel from "../models/orderModel.js";
-
+import dotenv from "dotenv";
+dotenv.config();
 
 export const registerController = async (req, res) => {
     try {
@@ -80,7 +81,7 @@ export const loginController = async (req, res) => {
         }
 
         //Token
-        const token = await JWT.sign({ _id: user._id }, process.env.JWT_SECRET, { expiresIn: "7d" });
+        const token = await JWT.sign({ _id: user._id }, `${process.env.JWT_SECRET}`, { expiresIn: "7d" });
         res.status(200).send({
             success: true,
             message: "Login Successfully",
